@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Invoices";
+    @model Dictionary<OrderDetails, int>;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Invoices</title>
+</head>
+<body>
+
+    @foreach (var item in Model)
+    {
+        <div class="card">
+            <div class="card-header">
+                Order : <b>@item.Key.Id</b>
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@item.Key.Date</h5>
+                <p class="card-text">PRODUCT <b>@item.Key.Prod_Id </b> with value <b>@item.Value</b> and quantity <b>@item.Key.Quantity</b></p>
+                <p>Total PRICE:  @(item.Key.Quantity*item.Value)</p>
+            </div>
+        </div>
+    }
+
+</body>
+</html>
